@@ -88,15 +88,30 @@ public class ExpItems {
             MaterialItem::new
     );
     public static final ExpandedStorageTier TIER_UNIVERSE = tier(12, "DEV", Long.MAX_VALUE, UNIVERSE_COMPONENT);
-    public static final ItemDefinition<ExpandedStorageCell> ARTIFICIAL_UNIVERSE_CELL = itemCell(
+    /*public static final ItemDefinition<ExpandedStorageCell> ARTIFICIAL_UNIVERSE_CELL = itemCell(
             "Artificial Universe ME Storage Cell",
             "artificial_universe_cell",
             TIER_UNIVERSE,
             ARTIFICIAL_UNIVERSE_CELL_HOUSING,
-            Integer.MAX_VALUE / 16,
-            (Integer.MAX_VALUE / 16) / 128,
+            Long.MAX_VALUE / 16,
+            (Long.MAX_VALUE / 16) / 128,
             63
+    );*/
+    public static final ItemDefinition<ExpandedStorageCell> ARTIFICIAL_UNIVERSE_CELL = item(
+            "Artificial Universe ME Storage Cell",
+            "artificial_universe_cell",
+            p -> new ExpandedStorageCell(
+                    p.stacksTo(1),
+                    UNIVERSE_COMPONENT,
+                    ARTIFICIAL_UNIVERSE_CELL_HOUSING,
+                    TIER_UNIVERSE.idleDrain(),
+                    Long.MAX_VALUE,
+                    128L,
+                    63,
+                    AEKeyType.items()
+            )
     );
+
     public static List<ItemDefinition<?>> getItemCells() {
         return List.of(ARTIFICIAL_UNIVERSE_CELL);
     }
@@ -132,6 +147,7 @@ public class ExpItems {
                         totalTypes,
                         AEKeyType.items())
         );
+
     }
     private static ExpandedStorageTier tier(int index, String namePrefix, long storageInBytes, ItemDefinition<ExpandedStorageComponentItem> component) {
         return new ExpandedStorageTier(index, namePrefix, storageInBytes, 0.5 * index, component::asItem);

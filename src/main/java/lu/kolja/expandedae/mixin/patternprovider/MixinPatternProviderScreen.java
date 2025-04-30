@@ -3,16 +3,10 @@ package lu.kolja.expandedae.mixin.patternprovider;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.glodblock.github.extendedae.client.button.ActionEPPButton;
-import lu.kolja.expandedae.client.button.ExpButton;
 import lu.kolja.expandedae.client.gui.widgets.ExpActionButton;
 import lu.kolja.expandedae.client.gui.widgets.ExpActionItems;
 import lu.kolja.expandedae.helper.IPatternProvider;
 import lu.kolja.expandedae.helper.IUpgradableMenu;
-import lu.kolja.expandedae.helper.KeybindUtil;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.screens.Screen;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -27,6 +21,7 @@ import appeng.client.gui.widgets.UpgradesPanel;
 import appeng.core.localization.GuiText;
 import appeng.menu.SlotSemantics;
 import appeng.menu.implementations.PatternProviderMenu;
+import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 

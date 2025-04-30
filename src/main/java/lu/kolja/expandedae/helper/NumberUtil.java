@@ -6,6 +6,7 @@ import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
 
 public class NumberUtil {
@@ -52,5 +53,27 @@ public class NumberUtil {
                 .append(Component.literal(split[1]).withStyle(NUMBER));
         }
         return Component.literal(text).withStyle(NUMBER);
+    }
+
+    private static final DecimalFormat DF = new DecimalFormat("#.##");
+
+    public static MutableComponent numberFormat(long number) {
+        return Component.literal(formatLong(number));
+    }
+
+    public static String formatLong(long number) {
+        if (number < 1_000) {
+            return DF.format(number);
+        } else if (number < 1_000_000) {
+            return DF.format((double) number / 1_000.0) + "K";
+        } else if (number < 1_000_000_000) {
+            return DF.format((double) number / 1_000_000.0) + "M";
+        } else if (number < 1_000_000_000_000L) {
+            return DF.format((double) number / 1_000_000_000.0) + "G";
+        } else if (number < 1_000_000_000_000_000L) {
+            return DF.format((double) number / 1_000_000_000_000.0) + "T";
+        } else {
+            return DF.format((double) number / 1_000_000_000_000_000.0) + "P";
+        }
     }
 }

@@ -7,14 +7,13 @@ import com.google.common.base.Preconditions;
 import appeng.api.stacks.AEKey;
 import appeng.api.stacks.AEKeyType;
 import appeng.api.storage.cells.ICellWorkbenchItem;
-import appeng.me.cells.BasicCellHandler;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.inventory.tooltip.TooltipComponent;
 import net.minecraft.world.item.ItemStack;
 
 public interface IExpandedCellItem extends ICellWorkbenchItem {
     /**
-     * Basic cell items are limited to a single {@link AEKeyType}.
+     * Expanded cell items are limited to a single {@link AEKeyType}.
      */
     AEKeyType getKeyType();
 
@@ -87,7 +86,7 @@ public interface IExpandedCellItem extends ICellWorkbenchItem {
      */
     default void addCellInformationToTooltip(ItemStack is, List<Component> lines) {
         Preconditions.checkArgument(is.getItem() == this);
-        BasicCellHandler.INSTANCE.addCellInformationToTooltip(is, lines);
+        ExpandedCellHandler.INSTANCE.addCellInformationToTooltip(is, lines);
     }
 
     /**
@@ -95,6 +94,6 @@ public interface IExpandedCellItem extends ICellWorkbenchItem {
      */
     default Optional<TooltipComponent> getCellTooltipImage(ItemStack is) {
         Preconditions.checkArgument(is.getItem() == this);
-        return BasicCellHandler.INSTANCE.getTooltipImage(is);
+        return ExpandedCellHandler.INSTANCE.getTooltipImage(is);
     }
 }

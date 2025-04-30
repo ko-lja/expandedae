@@ -23,12 +23,11 @@ import appeng.menu.AEBaseMenu;
 import appeng.menu.SlotSemantics;
 import appeng.menu.ToolboxMenu;
 import appeng.menu.implementations.PatternProviderMenu;
-import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.level.ItemLike;
 
-@Mixin(value = PatternProviderMenu.class, remap = false)
+@Mixin(value = PatternProviderMenu.class, remap = false, priority = 10)
 public abstract class MixinPatternProviderMenu extends AEBaseMenu implements IUpgradableMenu, IPatternProvider {
     @Unique
     private static final int BASE_FACTOR = 2;
@@ -65,11 +64,11 @@ public abstract class MixinPatternProviderMenu extends AEBaseMenu implements IUp
             if (detail instanceof AEProcessingPattern processingPattern) {
                 var input = Arrays.stream(processingPattern.getSparseInputs()).toArray(GenericStack[]::new);
                 var output = Arrays.stream(processingPattern.getOutputs()).toArray(GenericStack[]::new);
-                if (checkModify(input, getScale(), rightClick) && checkModify(output, getScale(), rightClick)) {
+                if (expandedae$checkModify(input, expandedae$getScale(), rightClick) && expandedae$checkModify(output, expandedae$getScale(), rightClick)) {
                     var mulInput = new GenericStack[input.length];
                     var mulOutput = new GenericStack[output.length];
-                    modifyStacks(input, mulInput, getScale(), rightClick);
-                    modifyStacks(output, mulOutput, getScale(), rightClick);
+                    expandedae$modifyStacks(input, mulInput, expandedae$getScale(), rightClick);
+                    expandedae$modifyStacks(output, mulOutput, expandedae$getScale(), rightClick);
                     var newPattern = PatternDetailsHelper.encodeProcessingPattern(
                             mulInput,
                             mulOutput
@@ -81,11 +80,11 @@ public abstract class MixinPatternProviderMenu extends AEBaseMenu implements IUp
 
     }
     @Unique
-    private int getScale() {
+    private int expandedae$getScale() {
         return BASE_FACTOR * KeybindUtil.shiftMultiplier() * KeybindUtil.ctrlMultiplier();
     }
     @Unique
-    private boolean checkModify(GenericStack[] stacks, int scale, boolean division) {
+    private boolean expandedae$checkModify(GenericStack[] stacks, int scale, boolean division) {
         if (division) {
             for (var stack : stacks) {
                 if (stack != null) {
@@ -107,7 +106,7 @@ public abstract class MixinPatternProviderMenu extends AEBaseMenu implements IUp
         return true;
     }
     @Unique
-    private void modifyStacks(GenericStack[] stacks, GenericStack[] des, int scale, boolean division) {
+    private void expandedae$modifyStacks(GenericStack[] stacks, GenericStack[] des, int scale, boolean division) {
         for (int i = 0; i < stacks.length; i ++) {
             if (stacks[i] != null) {
                 long amt = division ? stacks[i].amount() / scale : stacks[i].amount() * scale;

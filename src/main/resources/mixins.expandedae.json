@@ -6,7 +6,8 @@
   "plugin": "lu.kolja.expandedae.mixin.MixinPlugin",
   "refmap": "mixins.expandedae.refmap.json",
   "mixins": [
-    "cards.MixinNetworkStorage",
+    "MixinInitStorageCells",
+    "cpu.MixinCPUSelectionList",
     "emi.MixinEmiScreenBase",
     "patternprovider.MixinPatternProviderLogic",
     "patternprovider.MixinPatternProviderLogicHost",
@@ -17,6 +18,7 @@
     "terminal.MixinPatternEncodingTerminalMenu"
   ],
   "client": [
+    "cpu.MixinCraftConfirmScreen",
     "patternprovider.MixinPatternProviderScreen"
   ]
 }

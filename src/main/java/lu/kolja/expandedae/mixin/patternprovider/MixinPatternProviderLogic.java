@@ -31,7 +31,7 @@ import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
 
-@Mixin(value = PatternProviderLogic.class, remap = false)
+@Mixin(value = PatternProviderLogic.class, remap = false, priority = 100)
 public abstract class MixinPatternProviderLogic implements IUpgradeableObject {
 
     @Unique

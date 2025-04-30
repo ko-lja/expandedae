@@ -45,6 +45,7 @@ minecraft {
         }
 
         client {
+            property 'mixin.excludes', 'architectury.mixins.json'
             arg "-mixin.config=mixins.${mod_id}.json"
             arg "-XX:+AllowEnhancedClassRedefinition"
             property 'forge.enabledGameTestNamespaces', mod_id
@@ -114,22 +115,23 @@ dependencies {
     implementation fg.deobf("curse.maven:ex-pattern-provider-892005:6167228")
     implementation fg.deobf("curse.maven:glodium-957920:5226922")
     implementation fg.deobf("curse.maven:guideme-1173950:6227045")
-    //implementation fg.deobf("curse.maven:applied-energistics-2-wireless-terminals-459929:5217955")
+
+    implementation fg.deobf("curse.maven:applied-energistics-2-wireless-terminals-459929:5217955")
+    implementation fg.deobf("curse.maven:architectury-api-419699:5137938")
+    implementation fg.deobf("curse.maven:curios-309927:6418456")
+
     //compileOnly fg.deobf("curse.maven:applied-flux-965012:5989701")
     implementation fg.deobf("curse.maven:geckolib-388172:6027567")
     implementation fg.deobf("curse.maven:mega-cells-622112:6175008")
     implementation fg.deobf("curse.maven:cloth-config-348521:5729105")
     compileOnly fg.deobf("dev.emi:emi-forge:${emi_version}")
     runtimeOnly fg.deobf("dev.emi:emi-forge:${emi_version}")
-    //implementation fg.deobf("curse.maven:applied-energistics-2-wireless-terminals-459929:5217955")
     implementation 'org.spongepowered:mixin:0.8.5'
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
     compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:0.4.1"))
     implementation(jarJar("io.github.llamalad7:mixinextras-forge:0.4.1")) {
         jarJar.ranged(it, "[0.4.1,)")
     }
-    //compileOnly("org.projectlombok:lombok:1.18.38")
-    //annotationProcessor("org.projectlombok:lombok:1.18.38")
 }
 
 

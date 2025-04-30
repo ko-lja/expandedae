@@ -3,7 +3,6 @@ package lu.kolja.expandedae.definition;
 import java.util.Arrays;
 import java.util.Collection;
 
-import appeng.api.client.StorageCellModels;
 import net.minecraft.resources.ResourceLocation;
 
 public class ExpCells {
@@ -16,7 +15,7 @@ public class ExpCells {
     private ExpCells() {
     }
     public static void init() {
-        StorageCellModels.registerModel(ExpItems.ARTIFICIAL_UNIVERSE_CELL, ARTIFICIAL_UNIVERSE_CELL);
+       // StorageCellModels.registerModel(ExpItems.ARTIFICIAL_UNIVERSE_CELL, ARTIFICIAL_UNIVERSE_CELL);
     }
 
     static {
