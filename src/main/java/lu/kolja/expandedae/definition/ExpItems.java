@@ -81,13 +81,13 @@ public class ExpItems {
             ItemPatternRefillerCard::new
     );
 
-    public static final ItemDefinition<ExpandedStorageComponentItem> UNIVERSE_COMPONENT = component("Artificial Universe Storage Component", "artificial_universe_component", Long.MAX_VALUE);
+    public static final ItemDefinition<ExpandedStorageComponentItem> UNIVERSE_COMPONENT = component("Artificial Universe Storage Component", "artificial_universe_component", Integer.MAX_VALUE);
     public static final ItemDefinition<MaterialItem> ARTIFICIAL_UNIVERSE_CELL_HOUSING = item(
             "Artificial Universe Cell Housing",
             "artificial_universe_cell_housing",
             MaterialItem::new
     );
-    public static final ExpandedStorageTier TIER_UNIVERSE = tier(12, "DEV", Long.MAX_VALUE, UNIVERSE_COMPONENT);
+    public static final ExpandedStorageTier TIER_UNIVERSE = tier(12, "DEV", Integer.MAX_VALUE, UNIVERSE_COMPONENT);
     /*public static final ItemDefinition<ExpandedStorageCell> ARTIFICIAL_UNIVERSE_CELL = itemCell(
             "Artificial Universe ME Storage Cell",
             "artificial_universe_cell",
@@ -105,8 +105,8 @@ public class ExpItems {
                     UNIVERSE_COMPONENT,
                     ARTIFICIAL_UNIVERSE_CELL_HOUSING,
                     TIER_UNIVERSE.idleDrain(),
-                    Long.MAX_VALUE,
-                    128L,
+                    Integer.MAX_VALUE,
+                    Integer.MAX_VALUE / 128,
                     63,
                     AEKeyType.items()
             )
