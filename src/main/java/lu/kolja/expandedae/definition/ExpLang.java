@@ -30,6 +30,7 @@ public enum ExpLang implements LocalizationEnum {
     GUI_BUTTONS_PATTERN_MULT("gui.buttons.pattern.mult", "§bx%d§f"),
     GUI_BUTTONS_TOOLTIPS_PATTERN_DIV("gui.buttons.tooltips.pattern.div", "Divides contents by §b%d§f"),
     GUI_BUTTONS_TOOLTIPS_PATTERN_MULT("gui.buttons.tooltips.pattern.mult", "Multiplies contents by §c%d§f"),
+    GUI_EXP_SHIFT_TO_HIGHLIGHT("gui.expandedae.shift_to_highlight", "Shift-Click to highlight"),
 
     GROUP_ADV_PATTERN_PROVIDER_NAME("group.adv_pattern_provider.name", "ME Advanced Pattern Provider"),
     GROUP_EX_PATTERN_PROVIDER_NAME("group.ex_pattern_provider.name", "ME Extended Pattern Provider"),
