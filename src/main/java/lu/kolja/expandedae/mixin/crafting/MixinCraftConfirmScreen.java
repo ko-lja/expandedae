@@ -55,7 +55,7 @@ public class MixinCraftConfirmScreen extends AEBaseScreen<CraftConfirmMenu> impl
 
     @Inject(
             method = "<init>",
-            at = @At("TAIL")
+            at = @At("RETURN")
     )
     private void init(CraftConfirmMenu menu, Inventory playerInventory, Component title, ScreenStyle style, CallbackInfo ci) {
         this.eae$searchField = GuardedWidget
@@ -63,13 +63,15 @@ public class MixinCraftConfirmScreen extends AEBaseScreen<CraftConfirmMenu> impl
                 .runIfPresent(w -> w.setPlaceholder(GuiText.SearchPlaceholder.text()));
 
         this.eae$sortByToggle = this.addToLeftToolbar(new SettingToggleButton<>(Settings.SORT_BY, SortOrder.AMOUNT, ISearchScreen::eae$toggleButton));
+        
         this.eae$sortDirToggle = this.addToLeftToolbar(new SettingToggleButton<>(Settings.SORT_DIRECTION, SortDir.ASCENDING, ISearchScreen::eae$toggleButton));
+        
         this.eae$addMissing = this.addToLeftToolbar(new ExpActionButton(ExpActionItems.ADD_MISSING, this::eae$addMissing));
     }
 
     @Inject(
             method = "updateBeforeRender",
-            at = @At("TAIL")
+            at = @At("RETURN")
     )
     private void updateBeforeRender(CallbackInfo ci) {
         if (this.menu.getPlan() == null) return;

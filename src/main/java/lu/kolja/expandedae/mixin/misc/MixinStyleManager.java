@@ -7,15 +7,18 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 @Mixin(value = StyleManager.class, remap = false)
 public class MixinStyleManager {
-    @ModifyVariable(method = "loadStyleDoc", at = @At("HEAD"), argsOnly = true)
+    @ModifyVariable(
+            method = "loadStyleDoc",
+            at = @At(value = "LOAD", ordinal = 0),
+            argsOnly = true
+    )
     private static String loadStyleDocHooks(String path) {
-        return switch (path) {
-            case "/screens/wireless_pattern_encoding_terminal.json" -> "/screens/wtlib/modify_wireless_pattern_encoding_terminal.json";
-            case "/screens/pattern_encoding_terminal.json" -> "/screens/terminals/modify_pattern_encoding_terminal.json";
-            case "/screens/crafting_status.json" -> "/screens/exp_mode/modify_crafting_status.json";
-            case "/screens/craft_confirm.json" -> "/screens/exp_mode/modify_craft_confirm.json";
-            case "/screens/crafting_cpu.json" -> "/screens/exp_mode/modify_crafting_cpu.json";
-            default -> path;
-        };
+        // Only modify Terminal-related paths
+        if (path.contains("wireless_pattern_encoding_terminal.json")) {
+            return "/screens/wtlib/modify_wireless_pattern_encoding_terminal.json";
+        } else if (path.contains("pattern_encoding_terminal.json")) {
+            return "/screens/terminals/modify_pattern_encoding_terminal.json";
+        }
+        return path;
     }
 }

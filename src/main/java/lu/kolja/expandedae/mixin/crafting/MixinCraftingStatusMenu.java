@@ -24,10 +24,10 @@ public abstract class MixinCraftingStatusMenu extends CraftingCPUMenu implements
 
     @Inject(
             method = "<init>",
-            at = @At("TAIL")
+            at = @At("RETURN")
     )
     private void expandedae$init(CallbackInfo ci) {
-        this.registerClientAction(ACTION_CANCEL_ALL, this::expandedae$cancelAll);
+        //this.registerClientAction(ACTION_CANCEL_ALL, this::expandedae$cancelAll);
     }
 
     /**

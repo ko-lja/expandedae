@@ -86,7 +86,12 @@ public abstract class MixinPatternProviderMenu extends AEBaseMenu implements IUp
     )
     public void tickToolbox(CallbackInfo ci) {
         this.eae_$toolbox.tick();
-        if (this.isServerSide()) eae$blockingMode = logic.getConfigManager().getSetting(ExpSettings.BLOCKING_MODE);
+        if (this.isServerSide()) {
+            var blockingMode = logic.getConfigManager().getSetting(ExpSettings.BLOCKING_MODE);
+            if (blockingMode != null) {
+                eae$blockingMode = blockingMode;
+            }
+        }
     }
 
     @Override

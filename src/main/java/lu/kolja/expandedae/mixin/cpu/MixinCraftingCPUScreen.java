@@ -60,7 +60,7 @@ public abstract class MixinCraftingCPUScreen<T extends CraftingCPUMenu> extends 
 
     @Inject(
             method = "<init>",
-            at = @At("TAIL")
+            at = @At("RETURN")
     )
     private void init(CallbackInfo ci) {
         this.eae$searchField = GuardedWidget
@@ -82,7 +82,7 @@ public abstract class MixinCraftingCPUScreen<T extends CraftingCPUMenu> extends 
      */
     @Inject(
             method = "updateBeforeRender",
-            at = @At("TAIL")
+            at = @At("RETURN")
     )
     private void updateBeforeRender(CallbackInfo ci) {
         this.eae$searchField.runIfPresent(w -> w.visible = !this.getVisualEntries().isEmpty());

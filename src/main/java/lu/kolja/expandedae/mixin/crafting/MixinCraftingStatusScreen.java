@@ -36,7 +36,7 @@ public class MixinCraftingStatusScreen extends CraftingCPUScreen<CraftingStatusM
 
     @Inject(
             method = "<init>",
-            at = @At("TAIL"),
+            at = @At("RETURN"),
             remap = false
     )
     private void init(CraftingStatusMenu menu, Inventory playerInventory, Component title, ScreenStyle style, CallbackInfo ci) {

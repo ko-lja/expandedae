@@ -40,7 +40,7 @@ public abstract class MixinPatternProviderScreen<C extends PatternProviderMenu> 
 
     @Inject(
             method = "<init>",
-            at = @At("TAIL"),
+            at = @At("RETURN"),
             remap = false
     )
     private void init(PatternProviderMenu menu, Inventory playerInventory, Component title, ScreenStyle style, CallbackInfo ci) {

@@ -31,9 +31,7 @@
     "misc.MixinStyleManager",
     "patternprovider.MixinPatternProviderLogic",
     "patternprovider.MixinPatternProviderLogicHost",
-    "patternprovider.MixinPatternProviderMenu",
-    "terminal.MixinPatternEncodingTerminalMenu",
-    "terminal.MixinProcessingEncodingPanel"
+    "patternprovider.MixinPatternProviderMenu"
   ],
   "client": [
     "accessor.AccessorBuiltInModelHooks",
@@ -44,7 +42,9 @@
     "misc.MixinModelBakery",
     "misc.MixinSettingToggleButton",
     "patternprovider.MixinPatternProviderScreen",
-    "terminal.MixinPatternEncodingTermScreen"
+    "terminal.MixinPatternEncodingTermScreen",
+    "terminal.MixinPatternEncodingTerminalMenu",
+    "terminal.MixinProcessingEncodingPanel"
   ],
   "injectors": {
     "defaultRequire": 1
