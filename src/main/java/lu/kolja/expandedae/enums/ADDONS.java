@@ -8,7 +8,7 @@ public enum ADDONS {
         EXT("extendedae"),
         MEGA("megacells"),
         APPFLUX("appflux"),
-        ADV("advancedae"),
+        ADV("advanced_ae"),
         APPMEK("appmek"),
         ARSENG("arseng"),
         APPEX("appex");
